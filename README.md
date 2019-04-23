@@ -1,4 +1,4 @@
-# vuejs-sample
+# rentalgames-front
 
 ## Project setup
 ```
