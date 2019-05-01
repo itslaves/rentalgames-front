@@ -11,20 +11,26 @@
         </v-layout>
       </v-img>
       <v-layout wrap>
-        <v-flex xs12 md4>
+        <v-flex xs12 md12>
+          <v-text-field label="프로필" disabled/>
+          <v-img
+            :src="profileImage"
+            v-show="profileImage !== ''"
+            height="150"
+          />
+          <image-file-picker :onImageFilePicked="handleImageFileChanged"></image-file-picker>
+        </v-flex>
+        <v-flex xs12 md6>
           <v-text-field clearable label="이메일" v-model="email"/>
         </v-flex>
-        <v-flex xs12 md4>
+        <v-flex xs12 md6>
           <v-text-field clearable label="닉네임" v-model="nickname"/>
         </v-flex>
-        <v-flex xs12 md4>
+        <v-flex xs12 md6>
           <v-select label="성별" :items="genderOptions" v-model="gender" />
         </v-flex>
-        <v-flex xs12 md4>
-          <v-text-field label="나이" v-model="age"/>
-        </v-flex>
-        <v-flex xs12 md4>
-          <v-text-field label="프로필" v-model="profileImage"/>
+        <v-flex xs12 md6>
+          <v-text-field label="나이" type="number" v-model="age"/>
         </v-flex>
       </v-layout>
       <v-layout row justify-center>
@@ -35,19 +41,23 @@
   </v-form>
 </template>
 <script>
+import ImageFilePicker from "@/components/ImageFilePicker";
 export default {
+  components: {
+    ImageFilePicker,
+  },
   props: {
     email: {
       type: String,
-      default: ""
+      default: "",
     },
     nickname: {
       type: String,
-      default: ""
+      default: "",
     },
     profileImage: {
       type: String,
-      default: ""
+      default: "",
     }
   },
   data() {
@@ -58,5 +68,10 @@ export default {
       age: null,
     };
   },
+  methods: {
+    handleImageFileChanged (contents) {
+      this.profileImage = contents;
+    }
+  }
 };
 </script>
