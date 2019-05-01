@@ -2,10 +2,10 @@
 
 import Vue from 'vue';
 import { storiesOf } from '@storybook/vue';
-import KakaoLoginButton from '../components/KakaoLoginButton.vue';
+import NaverLoginButton from '../components/NaverLoginButton.vue';
 
 storiesOf('components/KakaoLoginButton', module)
   .add('Basic', () => ({
-    components: { KakaoLoginButton },
-    template: '<kakao-login-button appkey="{appkey}" callbackUrl=""></kakao-login-button>',
+    components: { NaverLoginButton },
+    template: '<naver-login-button clientId="{clientid}" callbackUrl=""></naver-login-button>',
   }));

@@ -3,8 +3,8 @@
 import { storiesOf } from '@storybook/vue';
 import GoogleLoginButton from '../components/GoogleLoginButton.vue';
 
-storiesOf('GoogleLoginButton', module)
+storiesOf('components/GoogleLoginButton', module)
   .add('Basic', () => ({
     components: { GoogleLoginButton },
-    template: '<google-login-button appkey="AIzaSyD2Udfhf3MxYxtb19lRDARBD1v_JCbBH6w"></google-login-button>',
+    template: '<google-login-button clientId="{clientId}" callbackUrl=""></google-login-button>',
   }));

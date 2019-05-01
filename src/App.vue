@@ -16,16 +16,19 @@
     </v-toolbar>
 
     <v-content>
+      <login></login>
     </v-content>
   </v-app>
 </template>
 
 <script>
 //import HelloWorld from './components/HelloWorld.vue';
+import Login from './views/Login'
 
 export default {
   name: 'App',
   components: {
+    Login,
   },
   data() {
     return {
