@@ -29,18 +29,18 @@ export default {
   },
   created: function () {
     this.reader = new FileReader();
-    this.reader.addEventListener("load", () => {
+    this.reader.addEventListener('load', () => {
       this.imageContents = this.reader.result;
       if (this.onImageFilePicked) {
-        this.onImageFilePicked(this.imageContents);
+        this.onImageFilePicked(this.imageName, this.imageContents);
       }
     });
   },
   methods: {
-    openImageFilePicker () {
+    openImageFilePicker() {
       this.$refs.imageInput.click();
     },
-    handleImageFilePicked (e) {
+    handleImageFilePicked(e) {
       if (e.target.files && e.target.files[0] !== undefined) {
         const targetFile = e.target.files[0];
         this.imageName = targetFile.name;
@@ -49,7 +49,7 @@ export default {
         this.imageName = '';
         this.imageContents = '';
       }
-    }
+    },
   },
 };
 </script>

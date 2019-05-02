@@ -69,7 +69,7 @@ export default {
     };
   },
   methods: {
-    handleImageFileChanged (contents) {
+    handleImageFileChanged(name, contents) {
       this.profileImage = contents;
     }
   }
