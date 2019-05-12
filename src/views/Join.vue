@@ -41,7 +41,8 @@
   </v-form>
 </template>
 <script>
-import ImageFilePicker from "@/components/ImageFilePicker";
+import ImageFilePicker from '@/components/ImageFilePicker.vue';
+
 export default {
   components: {
     ImageFilePicker,
@@ -49,29 +50,29 @@ export default {
   props: {
     email: {
       type: String,
-      default: "",
+      default: '',
     },
     nickname: {
       type: String,
-      default: "",
+      default: '',
     },
     profileImage: {
       type: String,
-      default: "",
-    }
+      default: '',
+    },
   },
   data() {
     return {
       valid: false,
-      gender: "",
-      genderOptions: ["남성", "여성"],
+      gender: '',
+      genderOptions: ['남성', '여성'],
       age: null,
     };
   },
   methods: {
     handleImageFileChanged(name, contents) {
       this.profileImage = contents;
-    }
-  }
+    },
+  },
 };
 </script>
