@@ -13,7 +13,7 @@ export default {
     onSuccess: Function,
     onFail: Function,
   },
-  mounted: function () {
+  mounted() {
     try {
       Kakao.init(this.appkey);
     } catch (error) {}

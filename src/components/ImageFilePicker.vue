@@ -21,13 +21,13 @@ export default {
   props: {
     onImageFilePicked: Function,
   },
-  data: function () {
+  data() {
     return {
       imageName: '',
       imageContents: '',
     };
   },
-  created: function () {
+  created() {
     this.reader = new FileReader();
     this.reader.addEventListener('load', () => {
       this.imageContents = this.reader.result;
