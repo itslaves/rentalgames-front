@@ -7,4 +7,4 @@ storiesOf('views/Login', module)
   .add('로그인', () => ({
     components: { Login },
     template: '<Login />',
-  }))
+  }));
