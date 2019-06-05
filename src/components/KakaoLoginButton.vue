@@ -8,10 +8,12 @@ export default {
   props: {
     appkey: {
       type: String,
-      reqruied: true,
+      required: true,
     },
-    onSuccess: Function,
-    onFail: Function,
+    callbackUrl: {
+      type: String,
+      required: true,
+    },
   },
   mounted() {
     try {
@@ -20,15 +22,10 @@ export default {
 
     Kakao.Auth.createLoginButton({
       container: '#kakao-login-btn',
-      success: (authObj) => {
-        if (this.onSuccess) {
-          this.onSuccess(authObj);
-        }
-      },
-      fail: (err) => {
-        if (this.onFail) {
-          this.onFail(err);
-        }
+      success(authObj) {
+        const callback = new URL(this.callbackUrl);
+        callback.searchParams.set('access_token', authObj.access_token);
+        document.location.href = callback.href;
       },
     });
   },

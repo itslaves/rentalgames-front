@@ -1,43 +1,47 @@
 <template>
-  <button id="sign-in-btn"
-          style="margin-left: 25px" @click="signIn">Google 로그인
-  </button>
+  <div id="google-login-button"></div>
 </template>
 
 <script>
 export default {
   name: 'GoogleLoginButton',
   props: {
-    apiKey: {
+    clientId: {
       type: String,
-      reqruied: true,
+      required: true,
     },
-    onSuccess: Function,
-    onFail: Function,
+    callbackUrl: {
+      type: String,
+      required: true,
+    },
   },
   data: () => ({
-    GoogleAuth: undefined,
+    renderConfig: {
+      scope: 'profile',
+      width: 240,
+      height: 50,
+      longtitle: true,
+      theme: 'dark',
+    },
   }),
   methods: {
-    signIn() {
-      console.dir(this.GoogleAuth);
-      this.GoogleAuth.signIn();
+    renderLoginButton() {
+      const auth2Config = {
+        client_id: this.clientId,
+        ux_mode: 'redirect',
+        redirect_uri: this.callbackUrl,
+      };
+
+      gapi.load('auth2', () => {
+        const authInstance = gapi.auth2.init(auth2Config);
+        authInstance
+          .then(() => authInstance.signOut())
+          .then(() => gapi.signin2.render('google-login-button', this.renderConfig));
+      });
     },
   },
-  mounted() {
-    gapi.load('client:auth2', () => {
-      gapi.client.init({
-        apiKey: this.apiKey,
-        clientId: '489302416615-r2f5n9atq9ntk6seebtb0pdg66c51is4.apps.googleusercontent.com',
-        scope: 'https://www.googleapis.com/auth/drive.metadata.readonly',
-        discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest'],
-      })
-        .then(() => {
-          this.GoogleAuth = gapi.auth2.getAuthInstance();
-          // Listen for sign-in state changes.
-          this.GoogleAuth.isSignedIn.listen(isSignedIn => console.dir(isSignedIn));
-        });
-    });
+  created() {
+    this.renderLoginButton();
   },
 };
 </script>
