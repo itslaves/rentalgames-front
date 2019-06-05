@@ -6,3 +6,5 @@ install: npm install
 script:
   - npm run test:unit
   - npm run lint -- --no-fix
+notifications:
+  slack: it-slaves:xRVaXMWqCiZPZLOFTiXe8YoY
