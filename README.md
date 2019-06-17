@@ -8,29 +8,38 @@
 ---
 
 ## Project setup
-```
+
+```sh
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
+### Compiles
+
+```sh
+npm run serve # Compiles and hot-reloads for development
+npm run build # Compiles and minifies for production
 ```
 
-### Compiles and minifies for production
-```
-npm run build
+### Tests
+
+```sh
+npm run test:unit # Run your unit tests
 ```
 
-### Run your tests
-```
-npm run test
+### Lints
+
+```sh
+npm run lint # Lints and fixes files
+npm run lint -- --no-fix # Only lints
 ```
 
-### Lints and fixes files
-```
-npm run lint
+### Storybook
+
+```sh
+npm run storybook:serve # Run storybook for development
+npm run storybook:build # Compiles storybook to create static files
 ```
 
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
