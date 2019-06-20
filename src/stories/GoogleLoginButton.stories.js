@@ -1,10 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 import { storiesOf } from '@storybook/vue';
-import GoogleLoginButton from '../components/GoogleLoginButton.vue';
+import LoginButton from '../components/LoginButton.vue';
 
 storiesOf('components/GoogleLoginButton', module)
   .add('Basic', () => ({
-    components: { GoogleLoginButton },
-    template: '<google-login-button clientId="{clientId}" callbackUrl=""></google-login-button>',
+    components: { LoginButton },
+    template: '<login-button url="https://developers.kakao.com/" image="https://developers.kakao.com/assets/img/about/logos/kakaologin/kr/kakao_account_login_btn_large_wide.png" vendors="kakao"></login-button>',
   }));
