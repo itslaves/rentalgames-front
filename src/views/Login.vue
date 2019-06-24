@@ -8,6 +8,12 @@
               <div class="login-button" :key="v.vendor" v-for="v in vendors">
                 <login-button :vendor="v.vendor" :url="v.url" :image="v.image"></login-button>
               </div>
+
+              <error-dialog v-model="dialog" :timeout="3000">
+                <template slot="title">에러</template>
+                <template slot="content">{{error}}</template>
+              </error-dialog>
+
             </v-layout>
           </div>
         </v-flex>
@@ -18,24 +24,28 @@
 
 <script>
 import LoginButton from '@/components/LoginButton.vue';
+import ErrorDialog from '@/components/ErrorDialog.vue';
 
 export default {
   components: {
     LoginButton,
+    ErrorDialog,
   },
   props: {},
   data: () => ({
     vendors: [
     ],
+    dialog: false,
+    error: '',
   }),
   mounted() {
     this.$http.get('/vendors')
       .then((response) => {
         this.vendors = response.data;
       })
-      .catch((error) => {
-        console.log(error);
-        alert('페이지를 불러오는 도중 에러가 발생하였습니다.');
+      .catch(() => {
+        this.dialog = true;
+        this.error = '로그인 정보를 불러오는데 실패하였습니다.';
       });
   },
 };
