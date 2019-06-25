@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn :href="url" icon>
+    <v-btn class="img" :href="url" icon>
           <img :src="image" :alt="vendor">
     </v-btn>
   </div>
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style scoped>
-  img {
+  .img {
     width: 600px;
     height: 98px;
   }
