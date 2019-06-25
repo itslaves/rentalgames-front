@@ -14,6 +14,15 @@
                 <template slot="content">{{error}}</template>
               </error-dialog>
 
+              <v-progress-circular
+                class="progress-circular"
+                v-if="loading"
+                :size="100"
+                :width="7"
+                color="purple"
+                indeterminate
+              ></v-progress-circular>
+
             </v-layout>
           </div>
         </v-flex>
@@ -35,6 +44,7 @@ export default {
   data: () => ({
     vendors: [
     ],
+    loading: true,
     dialog: false,
     error: '',
   }),
@@ -46,6 +56,9 @@ export default {
       .catch(() => {
         this.dialog = true;
         this.error = '로그인 정보를 불러오는데 실패하였습니다.';
+      })
+      .finally(() => {
+        this.loading = false;
       });
   },
 };
@@ -53,5 +66,8 @@ export default {
 <style scoped>
   .login-button {
     margin: 50px;
+  }
+  .progress-circular {
+    margin-top: 300px;
   }
 </style>
