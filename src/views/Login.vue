@@ -39,7 +39,7 @@ export default {
     error: '',
   }),
   mounted() {
-    this.$http.get('/vendors')
+    this.$http.get(`${process.env.VUE_APP_API_HOST}/oauth/vendors`)
       .then((response) => {
         this.vendors = response.data;
       })
