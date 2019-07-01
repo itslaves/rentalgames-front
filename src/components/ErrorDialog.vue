@@ -1,59 +1,42 @@
 <template>
-  <div>
-    <v-dialog
-      v-model="value"
-      width="500"
-    >
-      <v-card>
-        <v-card-title
-          class="headline grey lighten-2"
-          primary-title
+  <v-container
+    fill-height
+    style="height: calc(80vh - 58px);"
+  >
+    <v-layout align-center>
+      <v-flex text-xs-center>
+        <h1 class="display-2 primary--text">{{title}}</h1>
+        <p>{{details}}</p>
+        <v-btn
+          @click="$emit('click')"
+          outline
+          color="primary"
         >
-          <slot name="title"></slot>
-        </v-card-title>
-
-        <v-card-text>
-          <slot name="content"></slot>
-        </v-card-text>
-
-        <v-divider></v-divider>
-
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn
-            color="primary"
-            flat
-            @click="$emit('input', false)"
-          >
-            OK
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-  </div>
+          {{buttonText}}
+        </v-btn>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
 export default {
   props: {
-    timeout: {
-      type: Number,
-      default: 3000,
+    title: {
+      type: String,
+      required: true,
     },
-    value: {
-      type: Boolean,
+    details: {
+      type: String,
+      default: '',
+    },
+    buttonText: {
+      type: String,
       required: true,
     },
   },
   data: () => ({
   }),
-  updated() {
-    if (this.value) {
-      setTimeout(() => {
-        this.$emit('input', false);
-      }, this.timeout);
-    }
-  },
 };
 </script>
 <style scoped>

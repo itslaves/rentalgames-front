@@ -9,9 +9,10 @@
                 <login-button :vendor="v.vendor" :url="v.url" :image="v.image"></login-button>
               </div>
 
-              <error-dialog v-model="dialog" :timeout="3000">
-                <template slot="title">에러</template>
-                <template slot="content">{{error}}</template>
+              <error-dialog v-if="error"
+                            :title="`페이지 로딩 에러`"
+                            :details="`로그인 페이지 정보를 불러오던중 에러가 발생하였습니다.`"
+                            :button-text="`새로고침`" @click="reloadPage">
               </error-dialog>
 
               <v-progress-circular
@@ -45,29 +46,34 @@ export default {
     vendors: [
     ],
     loading: true,
-    dialog: false,
-    error: '',
+    error: false,
   }),
   mounted() {
-    this.$http.get(`${process.env.VUE_APP_API_HOST}/oauth/vendors`)
+    this.$http.get(`${process.env.VUE_APP_API_HOST}/oauth/vendors`, {
+      timeout: 5000,
+    })
       .then((response) => {
         this.vendors = response.data;
       })
       .catch(() => {
-        this.dialog = true;
-        this.error = '로그인 정보를 불러오는데 실패하였습니다.';
+        this.error = true;
       })
       .finally(() => {
         this.loading = false;
       });
   },
+  methods: {
+    reloadPage() {
+      window.location.reload();
+    },
+  },
 };
 </script>
 <style scoped>
   .login-button {
-    margin: 50px;
+    margin: 10px;
   }
   .progress-circular {
-    margin-top: 300px;
+    margin-top: 100px;
   }
 </style>
