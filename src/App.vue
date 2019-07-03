@@ -16,7 +16,7 @@
     </v-toolbar>
 
     <v-content>
-      <login></login>
+      <router-view></router-view>
     </v-content>
   </v-app>
 </template>
