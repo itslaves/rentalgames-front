@@ -16,20 +16,14 @@
     </v-toolbar>
 
     <v-content>
-      <login></login>
+      <router-view></router-view>
     </v-content>
   </v-app>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue';
-import Login from './views/Login.vue';
-
 export default {
   name: 'App',
-  components: {
-    Login,
-  },
   data() {
     return {
       //
