@@ -43,11 +43,53 @@
           @input="dueDateOpen = false"
         />
       </v-menu>
+      <v-text-field
+        label="참고 링크"
+        prepend-icon="link"
+      />
+      <image-file-picker></image-file-picker>
+      <v-card>
+        <v-container grid-list-sm fluid>
+          <v-layout row wrap>
+            <v-flex
+              v-for="n in 9"
+              :key="n"
+              xs4
+              d-flex
+            >
+              <v-card flat tile class="d-flex">
+                <v-img
+                  :src="`https://picsum.photos/500/300?image=${n * 5 + 10}`"
+                  :lazy-src="`https://picsum.photos/10/6?image=${n * 5 + 10}`"
+                  aspect-ratio="1"
+                  class="grey lighten-2"
+                >
+                  <template v-slot:placeholder>
+                    <v-layout
+                      fill-height
+                      align-center
+                      justify-center
+                      ma-0
+                    >
+                      <v-progress-circular indeterminate color="grey lighten-5" />
+                    </v-layout>
+                  </template>
+                </v-img>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-card>
     </v-container>
   </v-form>
 </template>
 <script>
+import ImageFilePicker from '@/components/ImageFilePicker.vue';
+
 export default {
+  components: {
+    ImageFilePicker,
+  },
   data() {
     return {
       dueDateOpen: false,
