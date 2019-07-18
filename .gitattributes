@@ -1,2 +1,7 @@
-*.js text eol=lf
-*.vue text eol=lf
+# Auto detect text files and perform LF normalization
+*       text=auto
+
+*.html  text diff=html
+*.css   text
+*.js    text
+
