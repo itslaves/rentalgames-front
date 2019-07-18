@@ -8,8 +8,8 @@ os:
   - "windows"
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
-      git config --global core.autocrlf true
-      git checkout -- .
+      git config --global core.autocrlf true;
+      git checkout -- .;
     fi
 install:
   - npm install
