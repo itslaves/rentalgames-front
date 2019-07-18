@@ -2,11 +2,21 @@ language: node_js
 node_js:
   - "8"
   - "10"
-install: npm install
+os:
+  - linux
+  - osx
+  - windows
+cache: npm
+install:
+  - npm install
+before_script:
+  - git config core.autocrlf false
+  - rm .git/index
+  - git reset --hard
 script:
-  - npm run test:unit
   - npm run lint -- --no-fix
+  - npm run test:unit
   - npm run build
-  - npm run storybook:build
+  - npm run storybook:build -- --quiet
 notifications:
   slack: it-slaves:xRVaXMWqCiZPZLOFTiXe8YoY
