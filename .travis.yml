@@ -7,10 +7,9 @@ os:
   - "osx"
   - "windows"
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
-      git config --global core.autocrlf true;
-      git checkout -- .;
-    fi
+  - git config --global core.eol lf
+  - git config --global core.autocrlf input
+  - git checkout -- .
 install:
   - npm install
 script:
