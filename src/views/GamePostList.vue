@@ -73,6 +73,13 @@
         </v-list-tile>
       </template>
     </v-list>
+    <div class="text-xs-center">
+      <v-pagination
+        v-model="page"
+        :length="15"
+        :total-visible="5"
+      />
+    </div>
   </v-card>
 </template>
 <script>
@@ -183,6 +190,7 @@ export default {
           user: '홍길동',
         },
       ],
+      page: 1,
     };
   },
 };
