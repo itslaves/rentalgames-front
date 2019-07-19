@@ -9,8 +9,7 @@ os:
 cache: npm
 install: npm install
 before_script:
-    - rm .git/index
-    - git reset --hard
+    - git checkout -f -- .
 script:
   - npm run lint -- --no-fix
   - npm run test:unit
