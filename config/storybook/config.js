@@ -1,9 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import Vue from 'vue';
-import { VApp } from 'vuetify/lib';
-import '@/plugins/vuetify';
 import { configure, addDecorator } from '@storybook/vue';
 import axios from 'axios';
+import vuetify from '@/plugins/vuetify';
 
 const req = require.context('../../src/stories', true, /.stories.js$/);
 
@@ -12,11 +11,10 @@ function loadStories() {
 }
 
 Vue.prototype.$http = axios;
-Vue.component('v-app', VApp);
-
 
 addDecorator(() => ({
-  template: '<v-app><story/></v-app>',
+  vuetify,
+  template: '<v-app><v-content><story/></v-content></v-app>',
 }));
 
 configure(loadStories, module);
