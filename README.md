@@ -40,6 +40,13 @@ npm run storybook:serve # Run storybook for development
 npm run storybook:build # Compiles storybook to create static files
 ```
 
+### Containerize
+
+```sh
+docker image build -t rg-front:$TAG . # Build a docker image
+docker container run --rm -it -p 8080:80 rg-front:$TAG # Run a docker container
+```
+
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
