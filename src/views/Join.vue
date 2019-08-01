@@ -34,8 +34,8 @@
         </v-flex>
       </v-layout>
       <v-layout row justify-center>
-        <v-btn outline color="primary">확인</v-btn>
-        <v-btn outline>취소</v-btn>
+        <v-btn outlined color="primary">확인</v-btn>
+        <v-btn outlined>취소</v-btn>
       </v-layout>
     </v-container>
   </v-form>

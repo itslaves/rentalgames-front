@@ -8,13 +8,9 @@ module.exports = {
     'eslint:recommended',
     '@vue/airbnb',
   ],
-  globals: {
-    gapi: 'readonly',
-    naver: 'readonly',
-    Kakao: 'readonly',
-  },
   rules: {
     'no-empty': 'off',
+    'import/order': 'off',
     'no-unused-vars': ['error', {
       varsIgnorePattern: 'Vue',
     }],
