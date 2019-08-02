@@ -11,7 +11,7 @@ describe('views/Join', () => {
   beforeEach(() => {
     vuetify = new Vuetify();
   });
-  it('assertion: default props', () => {
+  it('assertion: defaults', () => {
     const wrapper = shallowMount(Join, {
       localVue,
       vuetify,

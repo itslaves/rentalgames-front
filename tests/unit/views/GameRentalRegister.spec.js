@@ -11,7 +11,7 @@ describe('views/GameRentalRegister', () => {
   beforeEach(() => {
     vuetify = new Vuetify();
   });
-  it('assertion: default props', () => {
+  it('assertion: defaults', () => {
     const wrapper = shallowMount(GameRentalRegister, {
       localVue,
       vuetify,
