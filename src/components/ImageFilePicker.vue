@@ -28,7 +28,7 @@ export default {
     };
   },
   created() {
-    this.reader = new FileReader();
+    this.reader = new window.FileReader();
     this.reader.addEventListener('load', () => {
       this.imageContents = this.reader.result;
       if (this.onImageFilePicked) {

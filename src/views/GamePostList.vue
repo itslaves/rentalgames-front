@@ -19,27 +19,27 @@
         no-action
       >
         <template v-slot:activator>
-          <v-list-tile>
-            <v-list-tile-content>
-              <v-list-tile-title>{{ filter.title }}</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title>{{ filter.title }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
         </template>
-        <v-list-tile v-for="item in filter.items" :key="item.title" @click="() => {}">
-          <v-list-tile-action v-if="item.checked != null">
+        <v-list-item v-for="item in filter.items" :key="item.title" @click="() => {}">
+          <v-list-item-action v-if="item.checked != null">
             <v-checkbox v-model="item.checked" />
-          </v-list-tile-action>
+          </v-list-item-action>
 
-          <v-list-tile-content>
-            <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-          </v-list-tile-content>
+          <v-list-item-content>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
 
-          <v-list-tile-action v-if="item.action != null">
+          <v-list-item-action v-if="item.action != null">
             <v-btn icon ripple>
               <v-icon>{{ item.icon }}</v-icon>
             </v-btn>
-          </v-list-tile-action>
-        </v-list-tile>
+          </v-list-item-action>
+        </v-list-item>
       </v-list-group>
     </v-list>
     <v-list three-line>
@@ -50,27 +50,27 @@
           inset
           :key="index"
         ></v-divider>
-        <v-list-tile
-          :key="post.title"
+        <v-list-item
+          :key="post.id"
           avatar
           @click="() => {}"
         >
-          <v-list-tile-avatar tile>
+          <v-list-item-avatar tile>
             <img :src="post.image">
-          </v-list-tile-avatar>
+          </v-list-item-avatar>
 
-          <v-list-tile-content>
-            <v-list-tile-title v-html="post.title" />
-            <v-list-tile-sub-title v-html="post.price" />
-            <v-list-tile-sub-title v-html="post.location" />
-          </v-list-tile-content>
+          <v-list-item-content>
+            <v-list-item-title v-html="post.title" />
+            <v-list-item-subtitle v-html="post.price" />
+            <v-list-item-subtitle v-html="post.location" />
+          </v-list-item-content>
 
-          <v-list-tile-action>
-            <v-list-tile-action-text>{{ post.rating }} rating</v-list-tile-action-text>
-            <v-list-tile-action-text>{{ post.reviews }} reviews</v-list-tile-action-text>
-            <v-list-tile-action-text>{{ post.user }}</v-list-tile-action-text>
-          </v-list-tile-action>
-        </v-list-tile>
+          <v-list-item-action>
+            <v-list-item-action-text>{{ post.rating }} rating</v-list-item-action-text>
+            <v-list-item-action-text>{{ post.reviews }} reviews</v-list-item-action-text>
+            <v-list-item-action-text>{{ post.user }}</v-list-item-action-text>
+          </v-list-item-action>
+        </v-list-item>
       </template>
     </v-list>
     <div class="text-xs-center">
@@ -163,6 +163,7 @@ export default {
       ],
       posts: [
         {
+          id: 'post-1',
           image: 'https://image.fmkorea.com/files/attach/new/20180324/486616/16502788/990931994/80c1d9dbae8236da6cc6039ad0c911d1.jpg',
           title: '부루마블',
           price: 3000,
@@ -172,6 +173,7 @@ export default {
           user: '홍길동',
         },
         {
+          id: 'post-2',
           image: 'https://image.fmkorea.com/files/attach/new/20180324/486616/16502788/990931994/80c1d9dbae8236da6cc6039ad0c911d1.jpg',
           title: '부루마블',
           price: 3000,
@@ -181,6 +183,7 @@ export default {
           user: '홍길동',
         },
         {
+          id: 'post-3',
           image: 'https://image.fmkorea.com/files/attach/new/20180324/486616/16502788/990931994/80c1d9dbae8236da6cc6039ad0c911d1.jpg',
           title: '부루마블',
           price: 3000,
