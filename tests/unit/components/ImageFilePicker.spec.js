@@ -11,7 +11,7 @@ describe('components/ImageFilePicker', () => {
   beforeEach(() => {
     vuetify = new Vuetify();
   });
-  it('assertion: default props', () => {
+  it('assertion: defaults', () => {
     const wrapper = shallowMount(ImageFilePicker, {
       localVue,
       vuetify,
