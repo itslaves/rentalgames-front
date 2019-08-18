@@ -22,7 +22,6 @@
         min-width="290px"
         offset-y
         full-width
-        lazy
         :nudge-right="20"
         :nudge-bottom="10"
       >

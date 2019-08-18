@@ -9,7 +9,7 @@
         <p>{{details}}</p>
         <v-btn
           @click="$emit('click')"
-          outline
+          outlined
           color="primary"
         >
           {{buttonText}}

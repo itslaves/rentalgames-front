@@ -52,7 +52,6 @@
         ></v-divider>
         <v-list-item
           :key="post.id"
-          avatar
           @click="() => {}"
         >
           <v-list-item-avatar tile>

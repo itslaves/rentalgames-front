@@ -1,23 +1,24 @@
-import { createLocalVue, shallowMount } from '@vue/test-utils';
-import { expect } from 'chai';
-import Vuetify from 'vuetify';
-import Login from '@/views/Login.vue';
 import Vue from 'vue';
-import axios from 'axios';
+import Vuetify from 'vuetify';
+import { createLocalVue, mount } from '@vue/test-utils';
+import { expect } from 'chai';
+import Login from '@/views/Login.vue';
 
-const localVue = createLocalVue();
-localVue.use(Vuetify);
-Vue.prototype.$http = axios;
+Vue.use(Vuetify);
 
 describe('views/Login', () => {
+  let localVue;
   let vuetify;
   beforeEach(() => {
+    localVue = createLocalVue();
+    localVue.use(Vuetify);
     vuetify = new Vuetify();
   });
   it('assertion: defaults', () => {
-    const wrapper = shallowMount(Login, {
+    const wrapper = mount(Login, {
       localVue,
       vuetify,
+      sync: false,
     });
     expect(wrapper.vm.$data.loading).to.eq(true);
     expect(wrapper.vm.$data.error).to.eq(false);
