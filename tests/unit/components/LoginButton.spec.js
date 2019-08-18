@@ -1,25 +1,29 @@
-import { createLocalVue, shallowMount } from '@vue/test-utils';
-import { expect } from 'chai';
+import Vue from 'vue';
 import Vuetify from 'vuetify';
+import { createLocalVue, mount } from '@vue/test-utils';
+import { expect } from 'chai';
 import LoginButton from '@/components/LoginButton.vue';
 
-const localVue = createLocalVue();
-localVue.use(Vuetify);
+Vue.use(Vuetify);
 
 describe('components/LoginButton', () => {
+  let localVue;
   let vuetify;
   beforeEach(() => {
+    localVue = createLocalVue();
+    localVue.use(Vuetify);
     vuetify = new Vuetify();
   });
   it('assertion: defaults', () => {
-    const wrapper = shallowMount(LoginButton, {
+    const wrapper = mount(LoginButton, {
+      localVue,
+      vuetify,
+      sync: false,
       propsData: {
         vendor: 'test',
         url: 'http://test.com',
         image: 'http://test.com/login/btn/1',
       },
-      localVue,
-      vuetify,
     });
     expect(wrapper.props('vendor')).to.eq('test');
     expect(wrapper.props('url')).to.eq('http://test.com');
