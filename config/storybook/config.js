@@ -1,16 +1,16 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import Vue from 'vue';
+import vuetify from '@/plugins/vuetify';
 import { configure, addDecorator } from '@storybook/vue';
 import axios from 'axios';
-import vuetify from '@/plugins/vuetify';
 
-const req = require.context('../../src/stories', true, /.stories.js$/);
+Vue.prototype.$http = axios;
+
+const req = require.context('@/stories', true, /.stories.js$/);
 
 function loadStories() {
   req.keys().forEach(filename => req(filename));
 }
-
-Vue.prototype.$http = axios;
 
 addDecorator(() => ({
   vuetify,

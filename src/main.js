@@ -1,10 +1,10 @@
 import Vue from 'vue';
-import axios from 'axios';
 import vuetify from '@/plugins/vuetify';
-import App from '@/App.vue';
-import '@/registerServiceWorker';
+import axios from 'axios';
 import router from '@/router';
 import store from '@/store';
+import App from '@/App.vue';
+import '@/registerServiceWorker';
 
 Vue.config.productionTip = false;
 Vue.prototype.$http = axios;
