@@ -11,7 +11,7 @@
     "test:unit": "vue-cli-service test:unit --require tests/unit/setup.js"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^1.6.0",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.6",
     "vue-router": "^3.1.2",
